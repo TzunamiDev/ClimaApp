@@ -26,12 +26,12 @@ const ClimaProvider = ({children}) => {
       const { ciudad, pais } = datos
       const appId = import.meta.env.VITE_CLIMA_API_KEY
 
-      const url = `http://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=1&appid=${appId}`
+      const url = `https://cors-anywhere-mav.herokuapp.com/http://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=1&appid=${appId}`
 
       const { data } = await axios(url)
       const { lat, lon } = data[0]
 
-      const urlClima = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`
+      const urlClima = `https://cors-anywhere-mav.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`
 
       const { data: clima } = await axios(urlClima)
       console.log(clima)
